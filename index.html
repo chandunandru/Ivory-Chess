@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Ivory Chess</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">♞</span>
+
+        <div>
+          <p class="eyebrow">A CLASSIC, REIMAGINED</p>
+          <h1>Ivory Chess</h1>
+        </div>
+      </div>
+
+      <button id="new-game" class="btn btn-primary" type="button">
+        New game
+      </button>
+    </header>
+
+    <main class="layout">
+      <section class="game-panel" aria-label="Chess game">
+        <div id="top-player" class="player-bar">
+          <div class="player-identity">
+            <span class="player-dot b" aria-hidden="true"></span>
+            <strong>Black</strong>
+          </div>
+
+          <span class="player-note">Local player</span>
+        </div>
+
+        <div id="board-stage" class="board-stage">
+          <div
+            id="board"
+            class="board"
+            aria-label="Chess board"
+          ></div>
+        </div>
+
+        <div id="bottom-player" class="player-bar">
+          <div class="player-identity">
+            <span class="player-dot w" aria-hidden="true"></span>
+            <strong>White</strong>
+          </div>
+
+          <span class="player-note">To move</span>
+        </div>
+
+        <div class="toolbar" aria-label="Game controls">
+          <button id="flip-board" class="btn" type="button">
+            Flip board
+          </button>
+
+          <button id="undo-move" class="btn" type="button" disabled>
+            Undo move
+          </button>
+
+          <button id="redo-move" class="btn" type="button" disabled>
+            Redo move
+          </button>
+
+          <button
+            id="toggle-view"
+            class="btn"
+            type="button"
+            aria-pressed="true"
+          >
+            3D view: on
+          </button>
+        </div>
+
+        <p class="board-hint">
+          Select a piece, then choose a highlighted square.
+        </p>
+      </section>
+
+      <aside class="sidebar">
+        <section class="card status-card">
+          <p class="eyebrow">MATCH STATUS</p>
+
+          <div role="status" aria-live="polite">
+            <div class="status-heading">
+              <span
+                id="turn-dot"
+                class="turn-dot w"
+                aria-hidden="true"
+              ></span>
+
+              <h2 id="game-status">White to move</h2>
+            </div>
+
+            <p id="game-detail" class="muted">
+              Select a piece to see its legal moves.
+            </p>
+          </div>
+
+          <div class="match-meta">
+            <span>Local two-player</span>
+            <span id="move-number">Move 1</span>
+          </div>
+
+          <button
+            id="claim-draw"
+            class="btn claim-button"
+            type="button"
+            hidden
+          >
+            Claim draw
+          </button>
+        </section>
+
+        <section class="card history-card">
+          <div class="card-heading">
+            <h2>Move history</h2>
+            <span id="move-count" class="badge">0 moves</span>
+          </div>
+
+          <div id="history-scroll" class="history-scroll">
+            <p id="empty-history" class="empty-history">
+              Your moves will appear here.
+            </p>
+
+            <ol id="move-list" class="move-list"></ol>
+          </div>
+        </section>
+
+        <section class="card help-card">
+          <p class="eyebrow">HOW TO PLAY</p>
+          <h2>Your next move</h2>
+
+          <p class="muted">
+            Gold dots show legal destinations. Gold rings show
+            available captures. A red glow means the king is in check.
+          </p>
+
+          <p class="muted">
+            Both players use this screen. Flip the board whenever
+            you want to change perspective.
+          </p>
+        </section>
+      </aside>
+    </main>
+
+    <footer>HTML · CSS · JavaScript</footer>
+  </div>
+
+  <dialog id="promotion-dialog" aria-labelledby="promotion-title">
+    <p class="eyebrow">PAWN PROMOTION</p>
+    <h2 id="promotion-title">Choose your piece</h2>
+
+    <p class="muted">Your pawn has reached the final rank.</p>
+
+    <div id="promotion-options" class="promotion-options"></div>
+  </dialog>
+</body>
+</html>
